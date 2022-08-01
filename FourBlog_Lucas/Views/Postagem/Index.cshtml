@@ -1,0 +1,59 @@
+﻿@model PostagemViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Postagens</h1>
+
+<p>
+    <a asp-action="Cadastrar">Postar uma história</a>
+</p>
+
+<h4>Filtrar Postagens</h4>
+<form class="d-flex" style="max-width: 500px" role="search">
+    <select class="form-control mr-2" name="tagId" asp-items="Model.Tags"> @*"Name"" é o dado que será captura pelo controller. "asp-item" é uma tag helper que lista items, neste caso "Model.Tags"*@
+        <option>Nenhum filtro</option>
+    </select>
+    <input class="btn btn-outline-success" type="submit" value="Filtrar" name="tagId" /> @*Isso aqui é só o botão. As informações que serão submetidas estão acima*@
+</form>
+
+@*<div class="mb-3">
+     <label asp-for="TagId" class="form-label"></label>
+     <select asp-for="TagId" class="form-control" asp-items="Model.Tags"></select>
+</div>*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Título
+            </th>
+            <th>
+                Tag
+            </th>
+            <th>
+                Data de Criação
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Postagem item in Model.Postagens) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem =>item.Tag.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+                <a asp-action="Visualizar" asp-controller="Postagem" asp-route-id="@item.PostagemId">Ler esta história</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

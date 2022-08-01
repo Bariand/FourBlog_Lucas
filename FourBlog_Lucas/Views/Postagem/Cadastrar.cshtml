@@ -1,0 +1,56 @@
+﻿@model PostagemCadastrarViewModel
+
+@{
+    ViewData["Title"] = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Cadastrar</h1>
+
+<h4>Postagem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Cadastrar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Postagem.Titulo" class="control-label"></label>
+                <input asp-for="Postagem.Titulo" class="form-control" />
+                <span asp-validation-for="Postagem.Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Postagem.Texto" class="control-label"></label>
+                <input asp-for="Postagem.Texto" class="form-control" />
+                <span asp-validation-for="Postagem.Texto" class="text-danger"></span>
+            </div>
+@*            <div class="form-group">
+                <label asp-for="Postagem.DataCriacao" class="control-label"></label>
+                <input asp-for="Postagem.DataCriacao" class="form-control" />
+                <span asp-validation-for="Postagem.DataCriacao" class="text-danger"></span>
+            </div>*@
+@*            <div class="form-group">
+                <label asp-for="Postagem.UsuarioId" class="control-label"></label>
+                <select asp-for="Postagem.UsuarioId" class ="form-control" asp-items="ViewBag.UsuarioId"></select>
+            </div>*@
+            <div class="form-group mb-3">
+                <input type="hidden" asp-for="Postagem.PostagemId" class="form-control" />
+                <span asp-validation-for="Postagem.PostagemId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TagId" class="form-label"></label>
+                <select asp-for="TagId" class="form-control" asp-items="Model.Tags"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

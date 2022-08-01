@@ -1,0 +1,98 @@
+﻿@model PostagemVisualizarViewModel
+
+@{
+    ViewData["Title"] = "Visualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Visualizar</h1>
+
+<div>
+    <h4>Postagem</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Título
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Postagem.Titulo
+        </dd>
+        <dt class = "col-sm-2">
+            Texto
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Postagem.Texto
+        </dd>
+        <dt class = "col-sm-2">
+            Data de Criação
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Postagem.DataCriacao
+        </dd>
+        <dt class = "col-sm-2">
+            Tag
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Postagem.Tag.Nome
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Voltar à lista</a>
+</div>
+<h1>Comentários</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Criar" asp-controller="Comentario">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <input type="hidden" asp-for="@Model.Postagem.PostagemId" name="postagemId" /> 
+                @*"name" é o nome que será capturado no controller. asp-for é o dado que será passado.*@ @* value="@Model.PostagemId"*@
+            </div>          
+            <div class="form-group">
+                <label asp-for="Comentario.Texto" class="control-label"></label>
+                <input asp-for="Comentario.Texto" class="form-control" />
+                <span asp-validation-for="Comentario.Texto" class="text-danger"></span>
+            </div>
+@*            <div class="form-group">
+                <input type="hidden" asp-for="Postagem.PostagemId" class="form-control" />
+                <span asp-validation-for="Postagem.PostagemId" class="text-danger"></span>
+            </div>*@
+            <input class="btn btn-outline-success" type="submit" value="Criar" name="postagemId" />
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Texto
+            </th>
+            <th>
+                Data
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.Comentarios)
+        {
+            @if (item.PostagemId == Model.Postagem.PostagemId)
+            {
+                <tr>
+                    <td>
+                        @item.Texto
+                    </td>
+                    <td>
+                        @item.DataHora
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

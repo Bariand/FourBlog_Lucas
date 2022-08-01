@@ -1,0 +1,74 @@
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+a {
+    color: #9f6ee9
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-size: 14px;
+}
+
+body {
+    margin-bottom: 60px;
+    color: white
+}
+
+.table {
+    color: white;
+    text-align: left;
+}
+
+
+.form-control, .form-floating {
+    color: black;
+}
+
+.modal-header, .modal-body, .modal-footer {
+    color: black;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: white;
+    text-align: center;
+    margin: 2.5em 0;
+}
+
+.h1, .h2, .h3, .h4 {
+    font-family: 'Poiret One', cursive;
+}
+
+p {
+    color: white;
+}
+
+.texto-introducao, .titulo {
+    font-family: 'Poiret One', cursive;
+}
+
+.titulo {
+    font-family: 'Poiret One', cursive;
+    font-size: 3em;
+    font-stretch: condensed;
+    margin-bottom: -1em;
+}
+
+.paragrafo1 {
+    font-family: 'Poiret One', cursive;
+    font-size: 1.5em;
+    margin: 1em 4em;
+    line-height: 50px;
+}
+
+#imagem_fundo {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/Images/book.jpg");
+    background-repeat: repeat;
+    background-position: top;
+    background-size: cover;
+    background-color: black;
+}
